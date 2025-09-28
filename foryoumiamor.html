@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Mi Amorcito ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ffd1dc, #ffb7c5);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            color: #8a1c4a;
+        }
+        
+        /* Password Modal */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 182, 193, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            transition: opacity 0.5s ease;
+        }
+        
+        .password-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            animation: bounceIn 1s forwards;
+        }
+        
+        .password-content h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #d81b60;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ffb7c5;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        .password-input:focus {
+            border-color: #d81b60;
+        }
+        
+        .submit-btn {
+            background: #d81b60;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.2s;
+        }
+        
+        .submit-btn:hover {
+            background: #b71550;
+            transform: scale(1.05);
+        }
+        
+        /* Welcome Screen */
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ffd1dc, #ffb7c5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 99;
+            transition: opacity 0.8s ease;
+        }
+        
+        .welcome-message {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            color: #d81b60;
+            text-align: center;
+            animation: pulse 2s infinite, float 3s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Main Content */
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #d81b60;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+        }
+        
+        .tab.active {
+            background: white;
+            color: #d81b60;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .content-area {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            min-height: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Love Letter Tab */
+        .letter {
+            padding: 20px;
+            background: #fff5f7;
+            border-radius: 15px;
+            border: 2px dashed #ffb7c5;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .letter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .letter h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28px;
+            color: #d81b60;
+        }
+        
+        .letter-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        
+        .letter.expanded .letter-content {
+            max-height: 500px;
+        }
+        
+        /* Music Tab */
+        .song {
+            background: #f8e8ee;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .song-icon {
+            font-size: 24px;
+            color: #d81b60;
+        }
+        
+        .song-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .song-info p {
+            color: #888;
+            font-size: 14px;
+        }
+        
+        /* Notes Tab */
+        .note {
+            background: #fce4ec;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #d81b60;
+        }
+        
+        /* Gallery Tab */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Decorative Elements */
+        .heart, .teddy-bear {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+        .heart {
+            color: #d81b60;
+            font-size: 24px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .teddy-bear {
+            font-size: 32px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .continue-button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #ff4d79;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            }
+        .continue-button:hover {
+            background: #e63e6e;
+            }
+
+        .birthday-tab {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 20px;
+        }
+
+        .birthday-img {
+        max-width: 300px;
+        border-radius: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .birthday-text {
+        font-size: 1.3rem;
+        color: #ff3366;
+        font-family: 'Dancing Script', cursive;
+        }
+                /* Song controls */
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .controls button {
+            background: #ff4d79;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .controls button:hover {
+            background: #ff335f;
+        }
+
+        .controls input[type="range"] {
+            flex: 1;
+            height: 6px;
+            border-radius: 5px;
+            background: #ddd;
+            outline: none;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+
+            /* Fill effect */
+            background-image: linear-gradient(#ff4d79, #ff4d79);
+            background-repeat: no-repeat;
+            background-size: 0% 100%;
+        }
+
+        .controls input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ff4d79;
+            cursor: pointer;
+        }
+
+        .controls input[type="range"]::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: #ff4d79;
+            cursor: pointer;
+        }
+
+        /* for notes */
+
+        .note {
+            padding: 20px;
+            border-radius: 12px;
+            margin: 10px;
+            font-size: 1.5rem;
+            font-family: 'Dancing Script', cursive;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            transform: rotate(-1deg);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .note:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        .note:nth-child(5n+1) { background: #fff0f5; } /* pink */
+        .note:nth-child(5n+2) { background: #fce4ec; } /* blush */
+        .note:nth-child(5n+3) { background: #e8f5e9; } /* mint */
+        .note:nth-child(5n+4) { background: #e3f2fd; } /* blue */
+        .note:nth-child(5n+5) { background: #fff9c4; } /* yellow */
+
+
+        .meme-note {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #fff8f9;
+        }
+
+        .meme-note img {
+            max-width: 200px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }   
+       
+        /* Meme Slider */
+        .meme-slider {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            height: 350px;
+            overflow: hidden;
+            margin: 15px auto;
+            }
+
+            .meme-slider .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            }
+
+            .meme-slider .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+
+            .meme-slider .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            }
+
+            /* Add navigation buttons */
+            .slider-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            transform: translateY(-50%);
+            }
+
+            .slider-controls button {
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+            }
+
+            .slider-controls button:hover {
+            background: rgba(0,0,0,0.7);
+            }
+
+        /* Meme Video */
+            .meme-video {
+            width: 100%;
+            max-width: 300px;  /* keep same as slider */
+            margin: 15px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            }
+
+            .meme-video video {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+            background: #000; /* fallback background for letterboxing */
+            }
+
+
+        /* Animations */
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            60% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .welcome-message {
+                font-size: 36px;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Password Modal -->
+    <div class="password-modal" id="passwordModal">
+        <div class="password-content">
+            <h2>Enter the secret code</h2>
+            <input type="password" class="password-input" id="passwordInput" placeholder="Our special word...">
+            <button class="submit-btn" id="submitPassword">Enter</button>
+        </div>
+    </div>
+    
+    <!-- Welcome Screen -->
+        <div class="welcome-screen" id="welcomeScreen">
+            <h1 class="welcome-message">
+            Welcome my love,<br>
+            Feliz cumpleaños a la persona más especial de mi vida.<br>
+            Te amo con todo mi corazón.<br>
+            Enjoy your stay
+            </h1>
+        <button id="continueBtn" class="continue-button">Click me 💖</button>
+        </div>
+    
+    <!-- Main Content -->
+    <div class="container" id="mainContent" style="display: none;">
+        <div class="tabs">
+            <button class="tab active" data-tab="birthday">
+                <span>🎂</span> Birthday
+            </button>
+            <button class="tab" data-tab="love-letter">
+                <span>❤️</span> Love Letter
+            </button>
+            <button class="tab" data-tab="music">
+                <span>🎵</span> Music
+            </button>
+            <button class="tab" data-tab="notes">
+                <span>📝</span> Notes
+            </button>
+            <button class="tab" data-tab="memes">
+                <span>😂</span> Memes
+            </button>
+            <button class="tab" data-tab="gallery">
+                <span>🌷</span> Gallery
+            </button>
+        </div>
+
+        
+        <div class="content-area">
+            <!-- Birthday Tab -->
+            <div class="tab-content active" id="birthday">
+                <h2>Happy 21st Birthday, My Love ❤️</h2>
+                <div class="birthday-tab">
+                    <img src="images/bday_pic_of_mi_princess.jpg" alt="Birthday cake with photo" class="birthday-img">
+                    <p class="birthday-text">
+                        Today is extra special because my princess turns 21 🎂💖<br>
+                        This cake is just for you — but remember, <b>you</b> are the sweetest gift in my life!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Love Letter Tab -->
+            <div class="tab-content" id="love-letter">
+                <h2>My Dearest</h2>
+                <div class="letter" id="loveLetter">
+                    <div class="letter-header">
+                        <h3>A Letter For You</h3>
+                        <span>👇 Click to open</span>
+                    </div>
+                    <div class="letter-content">
+                        <p>Happyyyyyyyy birthdayyyyyyyy mi beautiful LILYYYYYYYYYY 💝,</p>
+                        <p>On this special day, I just want you to know that you are the greatest gift life has ever given me. Today is all about celebrating you, my princess 👸, and reminding you how deeply I love you.</p>
+                        
+                        <p>I’m so excited for this day, baby, because I get to see that beautiful smile on your cute face. Every single moment with you is a blessing, and every day brings me closer to you, making me fall in love with you even more.</p>
+                        
+                        <p>Since the day I met you, my life has felt so different — filled with unlimited love, care, and happiness that I never expected. You are that special person who changed my world completely, and I can’t thank you enough for being in my life.</p>
+                        <p>Baby, you are the most important person to me, my everything, my favorite person in the whole world.</p>
+                        
+                        <p>You’ve shown me what true happiness feels like, and I’ll forever be grateful for the love we share. No matter where life takes us, always remember that my heart belongs to you, and it always will.</p>
+                        
+                        <p><b>With all my love, Forever yours</b></p>
+                        <p><b>Soru ❤️</b></p>
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- Music Tab -->
+            <div class="tab-content" id="music">
+            <h2>Songs that remind me of you</h2>
+
+            <!-- Song 1 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>Birds of a Feather - (this reminds me of us because we’re meant to be together, always side by side 💝)</h4>
+                <p>by Billie Eilish</p>
+                <audio id="song1" src="audio/Birds of a feather.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song1">▶️</button>
+                    <input type="range" id="seek-song1" value="0" step="1">
+                </div>
+                </div>
+            </div>
+
+            <!-- Song 2 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>Hasta Ese Dia - (this reminds me of you because it captures how I want to love you faithfully, every day, until the very end💗🤍)</h4>
+                <p>by Lasso</p>
+                <audio id="song2" src="audio/Lasso_-_Hasta_Ese_Dia.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song2">▶️</button>
+                    <input type="range" id="seek-song2" value="0" step="1">
+                </div>
+                </div>
+            </div>
+
+            <!-- Song 3 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>Cariño - (this reminds me of you because you’re so lovely and beautiful baby that I can’t help but picture you when I hear it😍)</h4>
+                <p>by The Marias</p>
+                <audio id="song3" src="audio/The Marias - Cariño.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song3">▶️</button>
+                    <input type="range" id="seek-song3" value="0" step="1">
+                </div>
+                </div>
+            </div>
+
+            <!-- Song 4 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>Can't help falling in love - (It reminds me of you because I truly couldn’t help falling in love with you babe 🤍💍)</h4>
+                <p>by Elvis Presley</p>
+                <audio id="song4" src="audio/Elvis Presley - Can't Help Falling In Love.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song4">▶️</button>
+                    <input type="range" id="seek-song4" value="0" step="1">
+                </div>
+                </div>
+            </div>
+
+            <!-- Song 5 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>Love - (this reminds me of you because it feels so natural and soft, just like the way I love you my lilyyy 🩵🌸)</h4>
+                <p>by Wave to earth</p>
+                <audio id="song5" src="audio/Wave to earth - love.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song5">▶️</button>
+                    <input type="range" id="seek-song5" value="0" step="1">
+                </div>
+                </div>
+            </div>
+
+            <!-- Song 6 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>Kaise hua - (this reminds me of you because it makes me think about how lucky I am to have fallen in love with you baby 💘)</h4>
+                <p>by Vishal Mishra</p>
+                <audio id="song6" src="audio/Vishal Mishra - Kaise hua.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song6">▶️</button>
+                    <input type="range" id="seek-song6" value="0" step="1">
+                </div>
+                </div>
+            </div>
+
+            <!-- Song 7 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>Be My Baby - (this reminds me of you because I want you to be my baby forever 🤍♾️)</h4>
+                <p>by The Ronettes</p>
+                <audio id="song7" src="audio/The Ronettes - Be My Baby.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song7">▶️</button>
+                    <input type="range" id="seek-song7" value="0" step="1">
+                </div>
+                </div>
+            </div>
+
+            <!-- Song 8 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>No One Noticed - (this reminds me of you because it captures how much I miss you when we’re apart, how just seeing you on video calls makes my day, and how excited I am to finally fly to you and see your beautiful face in person❤️)</h4>
+                <p>by The Marias</p>
+                <audio id="song8" src="audio/The Marias - No One Noticed.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song8">▶️</button>
+                    <input type="range" id="seek-song8" value="0" step="1">
+                </div>
+                </div>
+            </div>
+        
+            <!-- Song 9 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>Sweet - (this reminds me how sweet everything feels with you, and how perfect it will be when I’m finally gonna be in your arms💕)</h4>
+                <p>by Cigarettes After Sex</p>
+                <audio id="song9" src="audio/Cigarettes After Sex - Sweet.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song9">▶️</button>
+                    <input type="range" id="seek-song9" value="0" step="1">
+                </div>
+                </div>
+            </div>
+
+            <!-- Song 10 -->
+            <div class="song">
+                <div class="song-icon">🎵</div>
+                <div class="song-info">
+                <h4>Ride or Die - (yk already baby why this songs reminds me of you 😏)</h4>
+                <p>by Sevdaliza</p>
+                <audio id="song10" src="audio/Sevdaliza - Ride or Die.mp3"></audio>
+                <div class="controls">
+                    <button class="play-pause" data-song="song10">▶️</button>
+                    <input type="range" id="seek-song10" value="0" step="1">
+                </div>
+                </div>
+            </div>
+
+            </div>
+
+            <!-- Notes Tab -->
+            <div class="tab-content" id="notes">
+                <h2>Some reminders just for you 💌</h2>
+
+                <!-- Cute notes -->
+                <div class="note">💖 Take care always my baby</div>
+                <div class="note">🍽️ Don’t skip meals, mi amor</div>
+                <div class="note">😍 You’re mine...always and I'm yours...always</div>
+                <div class="note">🥤 Don’t forget to drink enough water, cutie</div>
+                <div class="note">😊 Keep smiling, it makes my whole world brighter</div>
+                <div class="note">🤗 Remember you’re never alone, I’m always with you</div>
+                <div class="note">📖 Always rely on your baby, I’m here for you</div>
+                <div class="note">🧸 Hug your teddy when you miss me 😌</div>
+                <div class="note">💤 Don’t stay up too late scrolling on your phone 😤</div>
+                <div class="note">🌸 Stay as gorgeous as you are (impossible not to 💕)</div>
+                <div class="note">📸 Take more selfies for your baby, I want to see your faceee every sec 😍</div>
+                <div class="note">🥰 Remember how much I admire you everyday</div>
+                <div class="note">🌍 You are my whole world, don’t forget that</div>
+                <div class="note">🌟 You are the reason my nights and days shine</div>
+                <div class="note">🎂 Be excited… you’re 21, a whole queen now 👑</div>
+                <div class="note">💞 No matter what, I’m yours forever</div>
+                <div class="note">❤️ Always remember: I LOVE YOU more than anything mi cariño</div>
+                <div class="note">💌 Check this page whenever you need love & comfort, and missing me</div>
+            </div>
+
+            <!-- Meme Section -->
+            <div class="tab-content" id="memes">
+                <h2>Funny Memes Just for You 😂</h2>
+
+                <div class="note meme-note">
+                    <img src="images/when_u_dont_eat_on_time.jpeg" alt="Funny meme 1">
+                    <p>When you don’t eat on time 👀</p>
+                </div>
+                <div class="note meme-note">
+                    <img src="images/dont text back on time.jpeg" alt="Funny meme 2">
+                    <p>Me when you don’t text me back (ik she is just sleeping) 🥺</p>
+                </div>
+                <div class="note meme-note">
+                    <img src="images/looking beautiful.jpeg" alt="Funny meme 3">
+                    <p>When my babyy looks too stunning beautiful (well everytime she looks so beautiful) 😍</p>
+                </div>
+                <div class="note meme-note">
+                    <div class="meme-images">
+                        <img src="images/lookingsexy.jpeg" alt="Funny meme 1">
+                        <img src="images/sohot.gif" alt="Funny meme 2">
+                    </div>
+                    <p>When my babyy looks so sexyyy and hot 🫣😩</p>
+                </div>
+                <!-- Meme with slider -->
+                <div class="note meme-note">
+                <div class="meme-slider">
+                    <div class="slides">
+                    <div class="slide"><img src="images/start.jpeg" alt="Slide 1"></div>
+                    <div class="slide"><img src="images/drink.jpeg" alt="Slide 2"></div>
+                    <div class="slide"><img src="images/violent.jpeg" alt="Slide 3"></div>
+                    <div class="slide"><img src="images/sleepy.jpeg" alt="Slide 4"></div>
+                    <div class="slide"><img src="images/cute.jpeg" alt="Slide 5"></div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="slider-controls">
+                    <button class="prev">⬅️</button>
+                    <button class="next">➡️</button>
+                    </div>
+                </div>
+
+                <p>Swipe to see the whole meme ➡️</p>
+                </div>
+
+               <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/24:7.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>That's so me 24/7 😍</p>
+                    </div>
+
+                <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/flower&hugs.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>Lots of kisses, hugs and flowers for my LILYYYYYYYYYY</p>
+                    </div>
+                    
+                <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/castingspell.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>Now You are mine Baby for forever😚</p>
+                    </div>
+
+                <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/kissable.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>That's why sometimes I just can't help but stare at your kissable lips 😍</p>
+                    </div>
+
+                <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/me_when_i_see_my_gf.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>I just can't control when I see my gf 😩</p>
+                    </div>
+
+                <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/learned_from_u.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>Learned from you baby, and now you have to handle it 😗</p>
+                    </div>
+
+                <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/not_my_fault.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>Not my fault if you are that hot 😏</p>
+                    </div>
+
+                <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/its_like_breathing.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>Its like breathing when I'm with you 😌</p>
+                    </div>
+                <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/she_is_dangerous.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>She is the boss, no doubt 😫</p>
+                    </div>
+
+                <!-- Meme with video -->
+                    <div class="note meme-note">
+                    <div class="meme-video">
+                        <video controls>
+                        <source src="videos/im_in_jail.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p>pookie now I'm in jail 😗</p>
+                    </div>
+
+
+
+            </div>
+                
+            <!-- Gallery Tab -->
+            <div class="tab-content" id="gallery">
+                <h2>Flowers for you</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="images/WhatsApp Image 2025-09-25 at 06.12.54.jpeg" alt="Bouquet of delicate pink roses with soft green leaves">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/73632299-5dde-4ded-805a-88a7dcb4b5e4.png" alt="Beautiful pink tulips in a glass vase with morning dew">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e9890063-b481-46f6-97a1-9fc753211e19.png" alt="Fluffy pink peony flowers with lush foliage">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4bc3dffd-4971-4223-b7e4-3699d2b97bbe.png" alt="Branch of pink cherry blossoms against a blue sky">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d0daff3c-1751-492b-9b74-de28ac48d384.png" alt="Cluster of light pink carnations with delicate petals">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/51f3ca74-2471-403f-bb99-751536acd7d9.png" alt="Vibrant pink azalea flowers covering a garden bush">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="heart" style="top: 10%; left: 5%;">❤️</div>
+    <div class="heart" style="top: 20%; right: 10%;">❤️</div>
+    <div class="heart" style="bottom: 15%; left: 15%;">❤️</div>
+    <div class="teddy-bear" style="top: 30%; left: 10%;">🧸</div>
+    <div class="teddy-bear" style="bottom: 10%; right: 5%;">🧸</div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password check
+            const passwordModal = document.getElementById('passwordModal');
+            const welcomeScreen = document.getElementById('welcomeScreen');
+            const mainContent = document.getElementById('mainContent');
+            const passwordInput = document.getElementById('passwordInput');
+            const submitPassword = document.getElementById('submitPassword');
+            
+            submitPassword.addEventListener('click', function() {
+                if (passwordInput.value.toLowerCase() === 'lily') {
+                    // fade out password screen
+                    passwordModal.style.opacity = '0';
+                    setTimeout(() => {
+                        passwordModal.style.display = 'none';
+                        welcomeScreen.style.display = 'flex'; // show welcome screen
+                    }, 500);
+                } else {
+                    // wrong password feedback
+                    passwordInput.value = '';
+                    passwordInput.placeholder = 'Try again, my love...';
+                    passwordInput.style.borderColor = '#ff4d4d';
+                    setTimeout(() => {
+                        passwordInput.style.borderColor = '#ffb7c5';
+                        passwordInput.placeholder = 'Our special word...';
+                    }, 1500);
+                }
+            });
+
+            // 🌸 Handle the "Click me 💖" button
+            const continueBtn = document.getElementById('continueBtn');
+            continueBtn.addEventListener('click', () => {
+                welcomeScreen.style.opacity = '0';
+                setTimeout(() => {
+                    welcomeScreen.style.display = 'none';
+                    mainContent.style.display = 'block'; // show main page
+                }, 800);
+            });
+
+            
+            // Allow Enter key to submit password
+            passwordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    submitPassword.click();
+                }
+            });
+            
+            // Tab switching
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetTab = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === targetTab) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Expandable love letter
+            const loveLetter = document.getElementById('loveLetter');
+            loveLetter.addEventListener('click', function() {
+                this.classList.toggle('expanded');
+            });
+            
+            // Add floating decorative elements
+            function addFloatingElements() {
+                for (let i = 0; i < 15; i++) {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerHTML = '❤️';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 5 + 's';
+                    document.body.appendChild(heart);
+                }
+                
+                for (let i = 0; i < 5; i++) {
+                    const teddy = document.createElement('div');
+                    teddy.classList.add('teddy-bear');
+                    teddy.innerHTML = '🧸';
+                    teddy.style.left = Math.random() * 100 + '%';
+                    teddy.style.top = Math.random() * 100 + '%';
+                    teddy.style.animationDelay = Math.random() * 5 + 's';
+                    document.body.appendChild(teddy);
+                }
+            }
+            
+            addFloatingElements();
+        });
+        
+        // Meme Slider Script
+        let currentSlide = 0;
+
+        function showSlide(index) {
+        const slides = document.querySelector('.meme-slider .slides');
+        const totalSlides = slides.children.length;
+
+        if (index >= totalSlides) currentSlide = 0;
+        else if (index < 0) currentSlide = totalSlides - 1;
+        else currentSlide = index;
+
+        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        // Buttons
+        document.querySelector('.meme-slider .next').addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+        });
+
+        document.querySelector('.meme-slider .prev').addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+        });
+
+        // 🎵 MUSIC PLAYER SCRIPT
+        document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.play-pause').forEach(button => {
+        const songId = button.dataset.song;
+        const audio = document.getElementById(songId);
+        const seekBar = document.getElementById(`seek-${songId}`);
+
+        // Play/Pause toggle
+        button.addEventListener('click', () => {
+            if (audio.paused) {
+            // Pause all other songs
+            document.querySelectorAll('audio').forEach(a => a.pause());
+            document.querySelectorAll('.play-pause').forEach(b => b.textContent = '▶️');
+
+            audio.play();
+            button.textContent = '⏸️';
+            } else {
+            audio.pause();
+            button.textContent = '▶️';
+            }
+        });
+
+        // Update progress bar
+        audio.addEventListener('timeupdate', () => {
+            const progress = (audio.currentTime / audio.duration) * 100 || 0;
+            seekBar.value = progress;
+            seekBar.style.backgroundSize = `${progress}% 100%`;
+        });
+
+        // Seek song
+        seekBar.addEventListener('input', () => {
+            audio.currentTime = (seekBar.value / 100) * audio.duration;
+        });
+
+        // Reset after ending
+        audio.addEventListener('ended', () => {
+            button.textContent = '▶️';
+            seekBar.value = 0;
+            seekBar.style.backgroundSize = `0% 100%`;
+        });
+        });
+    });
+</script>
+</body>
+</html>
+
