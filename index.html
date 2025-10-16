@@ -244,6 +244,8 @@
             margin-bottom: 15px;
             border-left: 4px solid #d81b60;
         }
+
+        
         
         /* Gallery Tab */
         .gallery {
@@ -494,6 +496,63 @@
             background: #000; /* fallback background for letterboxing */
             }
 
+        /* Photo Gallery – Masonry Style */
+.photo-grid {
+    column-count: 5;              /* 5 columns like Pinterest */
+    column-gap: 15px;
+    padding: 15px;
+}
+
+.photo-card {
+    display: inline-block;
+    margin-bottom: 15px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(208, 111, 163, 0.25);
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;                 /* keep full aspect ratio */
+    display: block;
+    border-radius: 12px;
+    object-fit: contain;          /* no cropping */
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .photo-grid {
+        column-count: 4;
+    }
+}
+
+@media (max-width: 992px) {
+    .photo-grid {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .photo-grid {
+        column-count: 2;
+    }
+}
+
+@media (max-width: 500px) {
+    .photo-grid {
+        column-count: 1;
+    }
+}
+
+
 
         /* Animations */
         @keyframes bounceIn {
@@ -557,10 +616,10 @@
     <!-- Welcome Screen -->
         <div class="welcome-screen" id="welcomeScreen">
             <h1 class="welcome-message">
-            Welcome my love,<br>
-            Feliz cumpleaños a la persona más especial de mi vida.<br>
+            Welcome my love 🤍♾️,<br>
+            Feliz cumpleaños a la más especial persona de mi vida! <br>
             Te amo con todo mi corazón.<br>
-            Enjoy your stay
+            Disfruta de este pequeño regalo que hice para ti, mi amor 💘
             </h1>
         <button id="continueBtn" class="continue-button">Click me 💖</button>
         </div>
@@ -583,7 +642,7 @@
             <button class="tab" data-tab="memes">
                 <span>😂</span> Memes
             </button>
-            <button class="tab" data-tab="gallery">
+            <button class="tab" data-tab="photoGallery">
                 <span>🌷</span> Gallery
             </button>
         </div>
@@ -612,7 +671,7 @@
                     </div>
                     <div class="letter-content">
                         <p>Happyyyyyyyy birthdayyyyyyyy mi beautiful LILYYYYYYYYYY 💝,</p>
-                        <p>On this special day, I just want you to know that you are the greatest gift life has ever given me. Today is all about celebrating you, my princess 👸, and reminding you how deeply I love you.</p>
+                        <p>On this special day, I just want you to know that you are the greatest gift, life has ever given me. Today is all about celebrating you, my princess 👸, and reminding you how deeply I love you.</p>
                         
                         <p>I’m so excited for this day, baby, because I get to see that beautiful smile on your cute face. Every single moment with you is a blessing, and every day brings me closer to you, making me fall in love with you even more.</p>
                         
@@ -796,7 +855,7 @@
                 <div class="note">🎂 Be excited… you’re 21, a whole queen now 👑</div>
                 <div class="note">💞 No matter what, I’m yours forever</div>
                 <div class="note">❤️ Always remember: I LOVE YOU more than anything mi cariño</div>
-                <div class="note">💌 Check this page whenever you need love & comfort, and missing me</div>
+                <div class="note">💌 come back here whenever you need love & comfort, and missing me</div>
             </div>
 
             <!-- Meme Section -->
@@ -821,6 +880,12 @@
                         <img src="images/sohot.gif" alt="Funny meme 2">
                     </div>
                     <p>When my babyy looks so sexyyy and hot 🫣😩</p>
+                </div>
+                <div class="note meme-note">
+                    <div class="meme-images">
+                        <img src="images/new_meme.jpeg" alt="Funny meme 1">
+                    </div>
+                    <p>you have the full control over my heart baby</p>
                 </div>
                 <!-- Meme with slider -->
                 <div class="note meme-note">
@@ -951,12 +1016,69 @@
                     </div>
                     <p>pookie now I'm in jail 😗</p>
                     </div>
+        </div>
 
+            <!-- Photo Gallery Section -->
+            <div class="tab-content" id="photoGallery">
+            <h2>My Favourite Gallery 🌷</h2>
+            <div class="photo-grid">
 
+                <div class="photo-card"><img src="photos/baby_and_dylan_2.png" alt="baby_and_dylan_2"></div>
+                <div class="photo-card"><img src="photos/baby_at_car.jpeg" alt="baby_at_car"></div>
+                <div class="photo-card"><img src="photos/baby_hair.png" alt="baby_hair"></div>
+                <div class="photo-card"><img src="photos/baby_in_green.jpeg" alt="baby_in_green"></div>
+                <div class="photo-card"><img src="photos/baby_in_light_pink.jpeg" alt="baby_in_light_pink"></div>
+                <div class="photo-card"><img src="photos/baby_in_red.jpeg" alt="baby_in_red"></div>
+                <div class="photo-card"><img src="photos/baby_making_painting.png" alt="baby_making_painting"></div>
+                <div class="photo-card"><img src="photos/pretty_smile.jpeg" alt="pretty_smile"></div>  
+                <div class="photo-card"><img src="photos/baby_on_vc.jpeg" alt="baby_on_vc"></div>
+                <div class="photo-card"><img src="photos/ultra_cutie_pie.png" alt="ultra_cutie_pie"></div>
+                <div class="photo-card"><img src="photos/baby_spam.jpeg" alt="baby_spam"></div>
+                <div class="photo-card"><img src="photos/baby_painting_meet.jpeg" alt="baby_painting_meet"></div>
+                <div class="photo-card"><img src="photos/baby_in_grey.png" alt="baby_in_grey"></div>
+                <div class="photo-card"><img src="photos/baby_with_curly_hair_3.jpeg" alt="baby_with_curly_hair_3"></div>
+                <div class="photo-card"><img src="photos/cutie_pie_2.jpeg" alt="cutie_pie_2"></div>
+                <div class="photo-card"><img src="photos/baby_with_curly_hair_4.jpeg" alt="baby_with_curly_hair_4"></div>
+                <div class="photo-card"><img src="photos/hug_soruxlily.jpeg" alt="hug_soruxlily"></div>
+                <div class="photo-card"><img src="photos/baby_with_curly_hair_5.jpeg" alt="baby_with_curly_hair_5"></div>
+                <div class="photo-card"><img src="photos/baby_with_curly_hair.jpeg" alt="baby_with_curly_hair"></div>
+                <div class="photo-card"><img src="photos/baby_with_lily.jpeg" alt="baby_with_lily"></div>
+                <div class="photo-card"><img src="photos/babyxdylan.jpeg" alt="babyxdylan"></div>
+                <div class="photo-card"><img src="photos/childhood_baby.jpeg" alt="childhood_baby"></div>
+                <div class="photo-card"><img src="photos/cutie_pie_2.jpeg" alt="cutie_pie_2"></div>
+                <div class="photo-card"><img src="photos/first_photo_of_baby.jpeg" alt="first_photo_of_baby"></div>
+                <div class="photo-card"><img src="photos/cutie_pie_3.jpeg" alt="cutie_pie_3"></div>
+                <div class="photo-card"><img src="photos/cutie_pie.jpeg" alt="cutie_pie"></div>
+                <div class="photo-card"><img src="photos/baby_spam_2.jpeg" alt="baby_spam_2"></div>
+                <div class="photo-card"><img src="photos/prettiest_smile_ever.jpeg" alt="prettiest_smile_ever"></div>
+                <div class="photo-card"><img src="photos/how_cute.jpeg" alt="how_cute"></div>
+                <div class="photo-card"><img src="photos/baby_with_cap.jpeg" alt="baby_with_cap"></div>
+                <div class="photo-card"><img src="photos/first_sketch.jpeg" alt="first_sketch"></div>
+                <div class="photo-card"><img src="photos/stunning_baby.jpeg" alt="stunning_baby"></div>
+                <div class="photo-card"><img src="photos/my_cutie_pie.jpeg" alt="my_cutie_pie"></div>
+                <div class="photo-card"><img src="photos/soruxlily.jpeg" alt="soruxlily"></div>
+                <div class="photo-card"><img src="photos/lily_gmeet.jpeg" alt="lily_gmeet"></div>
+                <div class="photo-card"><img src="photos/lily_n_soru_gmeet_2.jpeg" alt="lily_n_soru_gmeet_2"></div>
+                <div class="photo-card"><img src="photos/lily_n_soru_gmeet_3.jpeg" alt="lily_n_soru_gmeet_3"></div>
+                <div class="photo-card"><img src="photos/lily_n_soru_gmeet_4.jpeg" alt="lily_n_soru_gmeet_4"></div>
+                <div class="photo-card"><img src="photos/lily_n_soru_gmeet_5.jpeg" alt="lily_n_soru_gmeet_5"></div>
+                <div class="photo-card"><img src="photos/bouqet2.jpeg" alt="bouqet2"></div>
+                <div class="photo-card"><img src="photos/lily_painting_hug.jpeg" alt="lily_painting_hug"></div>
+                <div class="photo-card"><img src="photos/necklace.jpeg" alt="necklace"></div>
+                <div class="photo-card"><img src="photos/light_pink_lily.jpeg" alt="light_pink_lily"></div>
+                <div class="photo-card"><img src="photos/pink_lily.jpeg" alt="pink_lily"></div>
+                <div class="photo-card"><img src="photos/pink_rose_bouqet.jpeg" alt="pink_rose_bouquet"></div>
+                <div class="photo-card"><img src="photos/red_pink_bouqet.jpeg" alt="red_pink_bouquet"></div>
+                <div class="photo-card"><img src="photos/red_white_bouqet.jpeg" alt="red_white_bouquet"></div>
+                <div class="photo-card"><img src="photos/tulip_garden.jpeg" alt="tulip_garden"></div>
+                <div class="photo-card"><img src="photos/tulips.jpeg" alt="tulips"></div>
+                
 
             </div>
-                
-            <!-- Gallery Tab -->
+            </div>
+
+
+            <!-- Gallery Tab
             <div class="tab-content" id="gallery">
                 <h2>Flowers for you</h2>
                 <div class="gallery">
@@ -979,7 +1101,7 @@
                         <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/51f3ca74-2471-403f-bb99-751536acd7d9.png" alt="Vibrant pink azalea flowers covering a garden bush">
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
     
@@ -991,172 +1113,143 @@
     <div class="teddy-bear" style="bottom: 10%; right: 5%;">🧸</div>
     
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Password check
-            const passwordModal = document.getElementById('passwordModal');
-            const welcomeScreen = document.getElementById('welcomeScreen');
-            const mainContent = document.getElementById('mainContent');
-            const passwordInput = document.getElementById('passwordInput');
-            const submitPassword = document.getElementById('submitPassword');
-            
-            submitPassword.addEventListener('click', function() {
-                if (passwordInput.value.toLowerCase() === 'lily') {
-                    // fade out password screen
-                    passwordModal.style.opacity = '0';
-                    setTimeout(() => {
-                        passwordModal.style.display = 'none';
-                        welcomeScreen.style.display = 'flex'; // show welcome screen
-                    }, 500);
-                } else {
-                    // wrong password feedback
-                    passwordInput.value = '';
-                    passwordInput.placeholder = 'Try again, my love...';
-                    passwordInput.style.borderColor = '#ff4d4d';
-                    setTimeout(() => {
-                        passwordInput.style.borderColor = '#ffb7c5';
-                        passwordInput.placeholder = 'Our special word...';
-                    }, 1500);
-                }
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    // 🌸 Password check
+    const passwordModal = document.getElementById('passwordModal');
+    const welcomeScreen = document.getElementById('welcomeScreen');
+    const mainContent = document.getElementById('mainContent');
+    const passwordInput = document.getElementById('passwordInput');
+    const submitPassword = document.getElementById('submitPassword');
 
-            // 🌸 Handle the "Click me 💖" button
-            const continueBtn = document.getElementById('continueBtn');
-            continueBtn.addEventListener('click', () => {
-                welcomeScreen.style.opacity = '0';
-                setTimeout(() => {
-                    welcomeScreen.style.display = 'none';
-                    mainContent.style.display = 'block'; // show main page
-                }, 800);
-            });
-
-            
-            // Allow Enter key to submit password
-            passwordInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    submitPassword.click();
-                }
-            });
-            
-            // Tab switching
-            const tabs = document.querySelectorAll('.tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    const targetTab = this.getAttribute('data-tab');
-                    
-                    // Update active tab
-                    tabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Show corresponding content
-                    tabContents.forEach(content => {
-                        content.classList.remove('active');
-                        if (content.id === targetTab) {
-                            content.classList.add('active');
-                        }
-                    });
-                });
-            });
-            
-            // Expandable love letter
-            const loveLetter = document.getElementById('loveLetter');
-            loveLetter.addEventListener('click', function() {
-                this.classList.toggle('expanded');
-            });
-            
-            // Add floating decorative elements
-            function addFloatingElements() {
-                for (let i = 0; i < 15; i++) {
-                    const heart = document.createElement('div');
-                    heart.classList.add('heart');
-                    heart.innerHTML = '❤️';
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.top = Math.random() * 100 + '%';
-                    heart.style.animationDelay = Math.random() * 5 + 's';
-                    document.body.appendChild(heart);
-                }
-                
-                for (let i = 0; i < 5; i++) {
-                    const teddy = document.createElement('div');
-                    teddy.classList.add('teddy-bear');
-                    teddy.innerHTML = '🧸';
-                    teddy.style.left = Math.random() * 100 + '%';
-                    teddy.style.top = Math.random() * 100 + '%';
-                    teddy.style.animationDelay = Math.random() * 5 + 's';
-                    document.body.appendChild(teddy);
-                }
-            }
-            
-            addFloatingElements();
-        });
-        
-        // Meme Slider Script
-        let currentSlide = 0;
-
-        function showSlide(index) {
-        const slides = document.querySelector('.meme-slider .slides');
-        const totalSlides = slides.children.length;
-
-        if (index >= totalSlides) currentSlide = 0;
-        else if (index < 0) currentSlide = totalSlides - 1;
-        else currentSlide = index;
-
-        slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    submitPassword.addEventListener('click', function() {
+        if (passwordInput.value.toLowerCase() === 'lily') {
+            passwordModal.style.opacity = '0';
+            setTimeout(() => {
+                passwordModal.style.display = 'none';
+                welcomeScreen.style.display = 'flex';
+            }, 500);
+        } else {
+            passwordInput.value = '';
+            passwordInput.placeholder = 'Try again, my love...';
+            passwordInput.style.borderColor = '#ff4d4d';
+            setTimeout(() => {
+                passwordInput.style.borderColor = '#ffb7c5';
+                passwordInput.placeholder = 'Our special word...';
+            }, 1500);
         }
+    });
 
-        // Buttons
-        document.querySelector('.meme-slider .next').addEventListener('click', () => {
-        showSlide(currentSlide + 1);
+    // Allow Enter key
+    passwordInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            submitPassword.click();
+        }
+    });
+
+    // 💖 Continue button on welcome screen
+    const continueBtn = document.getElementById('continueBtn');
+    continueBtn.addEventListener('click', () => {
+        welcomeScreen.style.opacity = '0';
+        setTimeout(() => {
+            welcomeScreen.style.display = 'none';
+            mainContent.style.display = 'block';
+        }, 800);
+    });
+
+    // 💕 Tabs switching
+    const tabs = document.querySelectorAll('.tab');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const targetTab = this.getAttribute('data-tab');
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+                if (content.id === targetTab) content.classList.add('active');
+            });
         });
+    });
 
-        document.querySelector('.meme-slider .prev').addEventListener('click', () => {
-        showSlide(currentSlide - 1);
-        });
+    // 💌 Love Letter expand/collapse
+    const loveLetter = document.getElementById('loveLetter');
+    loveLetter.addEventListener('click', function() {
+        loveLetter.classList.toggle('expanded');
+    });
 
-        // 🎵 MUSIC PLAYER SCRIPT
-        document.addEventListener('DOMContentLoaded', function () {
-        document.querySelectorAll('.play-pause').forEach(button => {
+    // 🎵 Music player controls
+    const playButtons = document.querySelectorAll('.play-pause');
+    const seekBars = document.querySelectorAll('input[type="range"]');
+    let currentAudio = null;
+
+    playButtons.forEach(button => {
         const songId = button.dataset.song;
         const audio = document.getElementById(songId);
         const seekBar = document.getElementById(`seek-${songId}`);
 
-        // Play/Pause toggle
+        // Play / Pause
         button.addEventListener('click', () => {
-            if (audio.paused) {
-            // Pause all other songs
-            document.querySelectorAll('audio').forEach(a => a.pause());
-            document.querySelectorAll('.play-pause').forEach(b => b.textContent = '▶️');
+            if (currentAudio && currentAudio !== audio) {
+                currentAudio.pause();
+                document.querySelector(`button[data-song="${currentAudio.id}"]`).textContent = '▶️';
+            }
 
-            audio.play();
-            button.textContent = '⏸️';
+            if (audio.paused) {
+                audio.play();
+                button.textContent = '⏸️';
+                currentAudio = audio;
             } else {
-            audio.pause();
-            button.textContent = '▶️';
+                audio.pause();
+                button.textContent = '▶️';
             }
         });
 
-        // Update progress bar
+        // Update seek bar
         audio.addEventListener('timeupdate', () => {
-            const progress = (audio.currentTime / audio.duration) * 100 || 0;
-            seekBar.value = progress;
+            seekBar.max = Math.floor(audio.duration);
+            seekBar.value = Math.floor(audio.currentTime);
+            const progress = (audio.currentTime / audio.duration) * 100;
             seekBar.style.backgroundSize = `${progress}% 100%`;
         });
 
-        // Seek song
+        // Seek manually
         seekBar.addEventListener('input', () => {
-            audio.currentTime = (seekBar.value / 100) * audio.duration;
+            audio.currentTime = seekBar.value;
         });
 
-        // Reset after ending
+        // Reset on end
         audio.addEventListener('ended', () => {
             button.textContent = '▶️';
             seekBar.value = 0;
             seekBar.style.backgroundSize = `0% 100%`;
         });
+    });
+
+    
+
+    // 😂 Meme slider
+    const sliders = document.querySelectorAll('.meme-slider');
+    sliders.forEach(slider => {
+        const slides = slider.querySelector('.slides');
+        const prev = slider.querySelector('.prev');
+        const next = slider.querySelector('.next');
+        const totalSlides = slides.children.length;
+        let index = 0;
+
+        prev.addEventListener('click', () => {
+            index = (index > 0) ? index - 1 : totalSlides - 1;
+            slides.style.transform = `translateX(-${index * 100}%)`;
+        });
+
+        next.addEventListener('click', () => {
+            index = (index < totalSlides - 1) ? index + 1 : 0;
+            slides.style.transform = `translateX(-${index * 100}%)`;
         });
     });
+});
 </script>
+
 </body>
 </html>
 
